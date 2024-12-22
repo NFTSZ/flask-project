@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request
 from database.produto import PRODUTOS
 
 product_route = Blueprint('produto', __name__)
@@ -20,7 +20,20 @@ def listar_produtos():
 
 @product_route.route('/', methods=['POST'])
 def inserir_produtos():
-    pass
+    # append na lista de um novo dict
+    data = request.json
+
+    new_product = {
+        'id': len(PRODUTOS) + 1,
+        'nome': data['nome'],
+        'estoque': data['estoque'],
+        'preco': data['preco']
+    }
+
+    PRODUTOS.append(new_product)
+
+    return render_template('item_produto.html', produto=new_product)
+
 
 @product_route.route('/new')
 def novo_produto():
@@ -40,4 +53,8 @@ def update_produto(product_id):
 
 @product_route.route('/<int:product_id>/delete', methods=['DELETE'])
 def deletar_produto(product_id):
-    pass
+    global PRODUTOS
+
+    PRODUTOS = [ p for p in PRODUTOS if p['id'] != product_id ]
+    
+    return {'deleted': 'ok'}
