@@ -45,11 +45,28 @@ def detalhe_produto(product_id):
 
 @product_route.route('/<int:product_id>/edit')
 def editar_produto(product_id):
-    return render_template('editar_produto.html')
+    produto = None
+
+    for p in PRODUTOS:
+        if p['id'] == product_id:
+            produto = p
+
+    return render_template('novo_produto.html', produto=produto)
 
 @product_route.route('/<int:product_id>/update', methods=['PUT'])
 def update_produto(product_id):
-    pass
+    produto_editado = None
+    data = request.json
+
+    for p in PRODUTOS:
+        if p['id'] == product_id:
+            p['nome'] = data['nome']
+            p['estoque'] = data['estoque']
+            p['preco'] = data['preco']
+
+            produto_editado = p
+
+    return render_template('item_produto.html', produto=produto_editado)
 
 @product_route.route('/<int:product_id>/delete', methods=['DELETE'])
 def deletar_produto(product_id):
