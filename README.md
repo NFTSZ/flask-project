@@ -1,7 +1,7 @@
 # Gestor de Estoque
 
-![GitHub top language](https://img.shields.io/github/languages/top/NFTSZ/flask_ap)
-![GitHub last commit (branch)](https://img.shields.io/github/last-commit/NFTSZ/flask_ap/main)
+![GitHub top language](https://img.shields.io/github/languages/top/NFTSZ/flask-project)
+![GitHub last commit (branch)](https://img.shields.io/github/last-commit/NFTSZ/flask-project/main)
 
 Lorem ipsum odor amet, consectetuer adipiscing elit. Per finibus tempor lectus ligula rutrum suscipit; nostra bibendum.
 Varius elit habitasse hendrerit mus quis hac. 
